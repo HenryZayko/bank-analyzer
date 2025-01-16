@@ -88,13 +88,12 @@ def analyze_statement():
             'recurring_transactions': analysis.get('recurring_transactions', []),
             'key_transactions': {
                 'rent_payments': analysis.get('key_transactions', {}).get('rent_payments', []),
-                'salary_deposits': analysis.get('key_transactions', {}).get('salary_deposits', []),
+                'income_deposits': analysis.get('key_transactions', {}).get('salary_deposits', []),
                 'utility_payments': analysis.get('key_transactions', {}).get('utility_payments', []),
                 'loan_payments': analysis.get('key_transactions', {}).get('loan_payments', [])
             },
-            'loan_recommendation': {
-                'approved': analysis.get('loan_recommendation', {}).get('approved', False),
-                'max_amount': float(analysis.get('loan_recommendation', {}).get('max_amount', 0)),
+            'loan_assessment': {
+                'decision': 'APPROVED' if analysis.get('loan_recommendation', {}).get('approved', False) else 'DENIED',
                 'explanation': analysis.get('loan_recommendation', {}).get('explanation', 'No explanation provided')
             }
         }
